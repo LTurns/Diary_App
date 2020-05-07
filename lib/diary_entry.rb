@@ -12,7 +12,7 @@ class DiaryEntry
   def self.all
     connection = PG.connect(dbname: 'diary_management')
     result = connection.exec("SELECT * FROM diary_entries")
-    result.each do |entry|
+    result.map do |entry|
       DiaryEntry.new(id: entry['id'], entry: entry['entry'], date: entry['date'])
     end
   end
@@ -20,6 +20,6 @@ class DiaryEntry
   def self.create(entry:, date:)
     connection = PG.connect(dbname: 'diary_management')
     result = connection.exec("INSERT INTO diary_entries (entry, date) VALUES('#{entry}', '#{date}') RETURNING id, entry, date;")
-    #DiaryEntry.new(id: result[0]['id'], entry: result[0]['entry'], date: result[0]['date'])
+    DiaryEntry.new(id: result[0]['id'], entry: result[0]['entry'], date: result[0]['date'])
   end
 end

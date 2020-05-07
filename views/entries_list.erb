@@ -1,0 +1,10 @@
+<h5> <% @entries.each do |entry| %>
+
+<%= entry.entry %>
+<%= entry.date %>
+
+<% end %></h5>
+
+<form action="/new_entry" method="get">
+<input type="submit" value="Add Another Entry"/>
+</form>

@@ -4,19 +4,19 @@ require './lib/diary_entry.rb'
 class Diary < Sinatra::Base
 
   get '/' do
+    @entries = DiaryEntry.all
+    erb :entries_list
+  end
+
+  get '/new_entry' do
     erb :new
   end
 
-  get '/new_entry'
-
   post '/entries' do
     DiaryEntry.create(entry: params[:entry], date: params[:date])
-    redirect '/entries'
-  end
-
-  get '/entries' do
-    erb :entries_list
     redirect '/'
   end
+
+  run! if app_file == $0
 
 end
