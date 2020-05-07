@@ -1,0 +1,5 @@
+<form action="/entries" method="post">
+  <input type="text" name="entry" placeholder="add entry here"/>
+  <input type="date" name="date" value=<%= Time.now.strftime("%m/%d/%Y") %>/>
+  <input type="submit" value="Add Entry"/>
+</form>
