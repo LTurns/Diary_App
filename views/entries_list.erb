@@ -1,9 +1,11 @@
+<ul>
 <h5> <% @entries.each do |entry| %>
-
-<%= entry.entry %>
+<li>
+<%= entry.entry %> >
 <%= entry.date %>
-
+</li>
 <% end %></h5>
+</ul>
 
 <form action="/new_entry" method="get">
 <input type="submit" value="Add Another Entry"/>

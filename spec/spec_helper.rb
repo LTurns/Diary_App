@@ -7,7 +7,7 @@ ENV['ENVIRONMENT'] = 'test'
 
 RSpec.configure do |config|
   config.before(:each) do
-    connection = PG.connect(db: 'diary_management_test')
+    connection = PG.connect(dbname: 'test_diary_management')
     connection.exec("TRUNCATE diary_entries;")
   end
 end
