@@ -13,7 +13,7 @@ RSpec.configure do |config|
 end
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-Capybara.app = DiaryEntry
+Capybara.app = Diary
 
 
 

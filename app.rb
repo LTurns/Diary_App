@@ -2,6 +2,7 @@ require 'sinatra/base'
 require './lib/diary_entry.rb'
 
 class Diary < Sinatra::Base
+  enable :sessions
 
   get '/' do
     @entries = DiaryEntry.all
