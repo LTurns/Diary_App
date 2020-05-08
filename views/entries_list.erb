@@ -1,12 +1,47 @@
-<ul>
-<h5> <% @entries.each do |entry| %>
-<li>
-<%= entry.entry %> >
-<%= entry.date %>
-</li>
-<% end %></h5>
-</ul>
+<center>
+  <head>
+  <h1>My Portfolio</h1>
+<link href='https://fonts.googleapis.com/css?family=Averia Gruesa Libre' rel='stylesheet'>
+</head>
+<body>
+<style>
+body {
+   padding: 50px;
+   font-family: 'Averia Gruesa Libre';
+   font-size: 30px;
+   color: white;
+   background-color: powderblue;
+}
+ table,
+ th,td {
+   padding: 10px;
+   border: 1px solid black;
+   border-collapse: collapse;
+   border-color: white;
+   width:400px;
+ }
+     </style>
+    <h5> <% @entries.each do |entry| %> </h5>
 
-<form action="/new_entry" method="get">
-<input type="submit" value="Add Another Entry"/>
-</form>
+  <table style="#FFB6C1",style="width:400px">
+  <tr>
+    <th>Entry</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td><%= entry.entry %></td>
+    <td><%= entry.date %></td>
+  </tr>
+  <tr>
+    <td><form action="/new_entry" method="get">
+    <input type="submit" value="Add Another Entry"/>
+    </form></td>
+    <td><form action="/diary_entry/:id"<%= entry.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'/>
+    <input type="submit" value="Delete" />
+    </form></td>
+</table>
+<br><br>
+</body>
+  <% end %>
+</center>
